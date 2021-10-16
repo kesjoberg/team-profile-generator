@@ -14,22 +14,21 @@
   <title>Document</title>
 </head>
 <header>
-  <nav class="navbar text-white bg-danger">
-    <span class="navbar-brand mb-0 h1 text-center">My Team</span>
-  </nav>
+  <div class="jumbotron text-white bg-danger">
+    <h1 class="display-4">My Team!</h1>
+  </div>
+
 </header>
 <body>
   <div class="card" style="width: 18rem;">
     <div class="card-header text-white bg-primary mb-3">
-      ${nameManager} <br>
+      ${this.getRole()} <br>
       <i class="fas fa-mug-hot"></i>Manager
-    </div>
-   
-    
+    </div>  
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${idManager}</li>
-      <li class="list-group-item">Email: ${emailEngineer}</li>
-      <li class="list-group-item">Office Number: ${officeManager}</li>
+      <li class="list-group-item">ID: ${this.getId()}</li>
+      <li class="list-group-item">Email: ${this.getEmail()}</li>
+      <li class="list-group-item">Office Number: ${this.getOfficeNumber()}</li>
     </ul>
   </div>
 
