@@ -3,14 +3,16 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const renderTeam = require('./src/teamBuilder')
+const renderTeam = require('./src/teamBuilder');
+
 
 const team =[];
 
 
+
 const initQuestions = () =>{
   inquirer
-    .prompt(
+    .prompt([
     {
       type: 'input',
       message: "Welcome to the Team Profile Generator! What is your team manager's name?",
@@ -30,19 +32,17 @@ const initQuestions = () =>{
       type: 'input',
       message:  "What is the team manager's office number?",
       name: 'officeNumber',
-    })
+    }
+    ])
     .then(response => {
-      const manager = new Manager(response.name, response.endQuestions, response.email, response.officeNumber)
+      const manager = new Manager(response.name, response.id, response.email, response.officeNumber)
       team.push(manager);
       askMoreTeamMembers()
-      
-    })
-   
-    
+    })   
 }
 const engineerQuestions = () =>{
   inquirer
-    .prompt(
+    .prompt([
     {
       type: 'input',
       message: " What is the engineer's name?",
@@ -62,18 +62,17 @@ const engineerQuestions = () =>{
       type: 'input',
       message:  "What is the engineer's GitHub username?",
       name: 'github',
-    })
+    }
+    ])
     .then(response => {
-      const engineer = new Engineer(response.name, response.endQuestions, response.email, response.github)
+      const engineer = new Engineer(response.name, response.id, response.email, response.github)
       team.push(engineer);
       askMoreTeamMembers()
-    })
-    
-    
+    })   
 }
 const internQuestions = () =>{
   inquirer
-    .prompt(
+    .prompt([
     {
       type: 'input',
       message: " What is the intern's name?",
@@ -93,15 +92,13 @@ const internQuestions = () =>{
       type: 'input',
       message:  "What school does the intern attend?",
       name: 'school',
-    })
+    }
+    ])
     .then(response => {
-      const intern = new Intern(response.name, response.endQuestions, response.email, response.school)
+      const intern = new Intern(response.name, response.id, response.email, response.school)
       team.push(intern);
       askMoreTeamMembers()
-    })
-    
-
-    
+    })   
 }
 
   
@@ -115,9 +112,9 @@ const askMoreTeamMembers = ()=> {
         name: 'role',
       })
      .then(response => {
-      if(response === 'Engineer'){
+      if(response.role === 'Engineer'){
         engineerQuestions();
-      } else if(response === 'Intern') {
+      } else if(response.role === 'Intern') {
         internQuestions();
       } else {
         endQuestions();
@@ -132,7 +129,8 @@ const endQuestions =() =>{
 }
 
 const buildTeam =() =>{
-  fs.writeFile('team.html', renderTeam(team), 'utf-8')
+  
+  fs.writeFile('team.html', renderTeam(team), (err) => err ? console.error(err) : console.log('Success!'))
 }
-initQuestions();
 
+initQuestions();

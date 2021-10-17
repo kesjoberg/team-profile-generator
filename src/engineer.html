@@ -24,8 +24,8 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${idEngineer}</li>
       <li class="list-group-item">ID: ${idEngineer}</li>
-      <li class="list-group-item">Email: ${emailEngineer}</li>
-      <li class="list-group-item">GitHub: ${githubEngineer}</li>
+      <li class="list-group-item">Email:<span id='email'><a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></span></li>
+      <li class="list-group-item">GitHub:<span id='github'><a href="{engineer.getGithub()}"> ${engineer.getGithub()}</a></span></li>
     </ul>
   </div>
 

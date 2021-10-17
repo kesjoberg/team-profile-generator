@@ -2,7 +2,6 @@
 
 const renderTeam = (team) =>{ 
 
-
   const generateManager = (manager) =>{
     return `<div class="card" style="width: 18rem;">
       <div class="card-header text-white bg-primary mb-3">
@@ -11,7 +10,7 @@ const renderTeam = (team) =>{
       </div>  
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${manager.getId()}</li>
-        <li class="list-group-item">Email: ${manager.getEmail()}</li>
+        <li class="list-group-item">Email:<span id='email'><a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></span></li> 
         <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
       </ul>
     </div>`
@@ -26,8 +25,8 @@ const renderTeam = (team) =>{
     
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${engineer.getId()}</li>
-        <li class="list-group-item">Email: ${engineer.getEmail()}</li>
-        <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+        <li class="list-group-item">Email: <span id='email'><a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></span></li>
+        <li class="list-group-item">GitHub:<span id='github'><a target="_blank" href="https://github.com/${engineer.getGithub()}"> ${engineer.getGithub()}</a></span></li>
       </ul>
     </div>`
   }
@@ -42,11 +41,15 @@ const renderTeam = (team) =>{
     
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${intern.getId()}</li>
-      <li class="list-group-item">Email: ${intern.getEmail()}</li>
+      <li class="list-group-item">Email:<span id='email'><a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></span></li> 
       <li class="list-group-item">School: ${intern.getSchool()}</li>
     </ul>
   </div>`
   }
+  const engineerHtml = team.filter(employee => employee.getRole() === 'Engineer').map(engineer => generateEngineer(engineer)).join('')
+  const internHtml = team.filter(employee => employee.getRole() === 'Intern').map(intern => generateIntern(intern)).join('')
+  const managerHtml = team.filter(employee => employee.getRole() === 'Manager').map(manager => generateManager(manager))
+  console.log(team);
 
   return `<!DOCTYPE html>
   <html lang="en">
@@ -61,7 +64,7 @@ const renderTeam = (team) =>{
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous"
   />
-    <title>Document</title>
+    <title>My Team</title>
   </head>
   <header>
     <div class="jumbotron text-white bg-danger">
@@ -70,15 +73,14 @@ const renderTeam = (team) =>{
   
   </header>
   <body> 
-    ${managerHtml}
-    ${engineerHtml}
-    ${internHtml}
+    <div class="d-flex justify-content-around">
+      ${managerHtml}
+      ${engineerHtml}
+      ${internHtml}
+    </div>
   </body>
   </html>`
 
-  const engineerHtml = team.filter(employee => employee.getRole() === 'Engineer').map(engineer => generateEngineer(engineer)).join('')
-  const internHtml = team.filter(employee => employee.getRole() === 'Intern').map(intern => generateIntern(intern)).join('')
-  const managerHtml = team.filter(employee => employee.getRole() === 'Manager').map(manager => generateManager(manager))
-  console.log(team);
+
 }
 module.exports = renderTeam    
