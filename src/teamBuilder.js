@@ -3,7 +3,7 @@
 const renderTeam = (team) =>{ 
 
   const generateManager = (manager) =>{
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card col-md-3 m-1 p-0" style="width: 18rem;">
       <div class="card-header text-white bg-primary mb-3">
         ${manager.getName()} <br>
         <i class="fas fa-mug-hot"></i>Manager
@@ -16,7 +16,7 @@ const renderTeam = (team) =>{
     </div>`
   }
   const generateEngineer = (engineer) =>{
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card col-md-3 m-1 p-0" style="width: 18rem;">
     <div class="card-header text-white bg-primary mb-3">
       ${engineer.getName()} <br>
       <i class="fas fa-glasses"></i> Engineer
@@ -32,7 +32,7 @@ const renderTeam = (team) =>{
   }
 
   const generateIntern =(intern) =>{
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="card col-md-3 m-1 p-0" style="width: 18rem;">
     <div class="card-header text-white bg-primary mb-3">
       ${intern.getName()} <br>
       <i class="fas fa-user-graduate"></i>Intern
@@ -67,13 +67,13 @@ const renderTeam = (team) =>{
     <title>My Team</title>
   </head>
   <header>
-    <div class="jumbotron text-white bg-danger">
+    <div class="jumbotron text-center text-white bg-danger">
       <h1 class="display-4">My Team!</h1>
     </div>
   
   </header>
   <body> 
-    <div class="d-flex justify-content-around">
+    <div class="d-md-flex flex-wrap justify-content-around">
       ${managerHtml}
       ${engineerHtml}
       ${internHtml}
