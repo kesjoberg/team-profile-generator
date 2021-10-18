@@ -1,19 +1,27 @@
 const Manager = require('../lib/Manager')
 
+describe('office number', () =>{
+  it('Creates an office number', ()=> {
+    const manager = new Manager('Karna', 1, 'me@me.com', 1234)
+
+    expect(manager.officeNumber).toBe(1234)
+  })
+})
+
 describe('getOfficeNumber', () =>{
-  it('should return the office number of the manager', () =>{
-    const manager = new Manager();
-    const officeNumber = 1234;
 
-    manager.getOfficeNumber(officeNumber);
+  it('should return the office number of the manager using getOfficeNumber', () =>{
+    const manager = new Manager('Karna', 1, 'me@me.com', 1234)
+  
 
-    expect(manager.getOfficeNumber()).toEqual(officeNumber);
+    expect(manager.getOfficeNumber()).toEqual(1234);
   });
 }); 
 
 describe('getRole', () =>{
   it('should return the role title of Manager', () =>{
-    expect(new Manager('Manager').getRole()).toEqual('Manager');
+    const manager = new Manager('Karna', 1, 'me@me.com', 1234)
+    expect(manager.getRole()).toEqual('Manager');
   });
 });
 
