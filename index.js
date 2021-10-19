@@ -125,12 +125,12 @@ const askMoreTeamMembers = ()=> {
 
 const endQuestions =() =>{
   buildTeam();
-  console.log('Thank you for building your team, please go to the team.html to view your team.')
+  console.log('Thank you for building your team, please go to the dist folder and find team.html to view your team.')
 }
 
 const buildTeam =() =>{
   
-  fs.writeFile('team.html', renderTeam(team), (err) => err ? console.error(err) : console.log('Success!'))
+  fs.writeFile('./dist/team.html', renderTeam(team), (err) => err ? console.error(err) : console.log('Success!'))
 }
 
 initQuestions();
