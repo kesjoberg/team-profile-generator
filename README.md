@@ -8,7 +8,7 @@ Our second objective was to write and run tests using Jest to verify that all of
 
 
 ## Video Clip of Project
-![Video demo of the program](https://watch.screencastify.com/v/qRblzn07UIHviVqi7f9x)
+https://watch.screencastify.com/v/qRblzn07UIHviVqi7f9x
 
 ## Screenshot of an example team.html
 ![Screenshot of a working page from example](./assets/sample-team-screenshot.jpg)
